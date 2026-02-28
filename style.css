@@ -1,0 +1,193 @@
+/* 공통 */
+*{
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+body{
+    background-color: pink;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: white;
+}
+.menu{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: space-around;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    /* background-color: rgb(255, 255, 255); */
+}
+
+/* Home */
+/* main image */
+.mainImages{
+    width: 100vw;
+    height: 60vw;
+}
+.imageBox{
+    display: flex;
+    position: relative;
+    width: 600vw;
+    height: 100%;
+    left: 0;
+}
+.image{
+    width: 100vw;
+    height: 100%;
+}
+[color="red"]{
+    background-color:red;
+}
+[color="orange"]{
+    background-color:orange;
+}
+[color="yellow"]{
+    background-color:yellow;
+}
+[color="green"]{
+    background-color:green;
+}
+[color="blue"]{
+    background-color:blue;
+}
+
+/* Calendar */
+.calendarBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 70vw;
+    /* background-color: orange; */
+}
+.calendar{
+    width: 80%;
+    height: 90%;
+    border-radius: 15px;
+    /*background-color: purple;*/
+    overflow: hidden;
+}
+/* 월,년 */
+.monthYear{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    box-sizing: border-box;
+    /* border-bottom: 10px solid pink; */
+    background-color: rgb(251, 206, 177);
+}
+.month{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    font-size: 19px;
+    font-weight: 700;
+    /* background-color: yellow; */
+}
+.arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    font-size: 30px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.arrow:hover{
+    color:white;
+}
+.monthNumber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+    cursor: pointer;
+    color: rgb(73, 72, 72);
+    /* background-color: green; */
+}
+.monthNumber:hover{
+    color: white;
+}
+.year{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    font-weight: 700;
+    cursor: pointer;
+    /* background-color: green; */
+}
+.year:hover{
+    color: white;
+}
+/* 주 */
+.weekBox{
+    display: flex;
+    width: 100%;
+    height: 5%;
+    box-sizing: border-box;
+    background-color: white;
+}
+.week{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    height: 100%;
+}
+.week:nth-child(1){
+    color: red;
+}
+.week:nth-last-child(1){
+    color: blue;
+}
+/* 일 */
+.day{
+    width: 100%;
+    height: 80%;
+    background-color: rgb(251, 206, 177);
+}
+.dayLine{
+    display: flex;
+    width: 100%;
+    height: 20%;
+}
+.dayBox{
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+}
+.dayNumber{
+    display: flex;
+    justify-content: center;
+    height: 30%;
+    font-weight: 700;
+    box-sizing: border-box;
+    /* background-color: red; */
+}
+.dayLine > .dayBox:nth-child(1) > .dayNumber{
+    color: red;
+}
+.dayLine > .dayBox:nth-last-child(1) > .dayNumber{
+    color: blue;
+}
+/* Calendar의 둥근 부분에 border을 맞추기 위함 */
+.dayLine:nth-last-child(1) > .dayBox:nth-child(1){
+    border-radius: 0 0 0 15px;
+}
+.dayLine:nth-last-child(1) > .dayBox:nth-last-child(1){
+    border-radius: 0 0 15px 0;
+}
