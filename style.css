@@ -1,91 +1,329 @@
-const mainImages = document.querySelector(".mainImages")
-const imageBox = document.querySelector(".imageBox")
-let i = 0;
-
-//3초마다 이미지 왼쪽으로 자동 이동
-if(imageBox){
-    setInterval(() => {
-        i++;
-        imageBox.style.transition = "1s";
-        imageBox.style.left = `-${i * 100}vw`;
-    }, 3000);
-
-    imageBox.addEventListener("transitionend", () => {
-        if(i === 5){
-            i = 0;
-            imageBox.style.left = 0;
-            imageBox.style.transition = "0s";
-        }
-    })
+/* 공통 */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: pink;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: white;
+}
+[color="red"]{
+    background-color: red;
+}
+[color="orange"]{
+    background-color: orange;
+}
+[color="yellow"]{
+    background-color: yellow;
+}
+[color="green"]{
+    background-color: green;
+}
+[color="blue"]{
+    background-color: blue;
+}
+[color="navy"]{
+    background-color: navy;
+}
+[color="purple"]{
+    background-color: purple;
+}
+[color="olive"]{
+    background-color: olive;
+}
+[color="mediumaquamarine"]{
+    background-color: mediumaquamarine;
+}
+[color="pink"]{
+    background-color: pink;
+}
+.menu{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: space-around;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    /* background-color: rgb(255, 255, 255); */
 }
 
-// 날짜 클릭 시
-// 1.파란 테두리 생성
-// 2. 내용 입력 창 오픈
-const dayBox = document.querySelectorAll(".dayBox")
-
-if(dayBox){
-    // 파란 테두리 생성 함수
-    blueBorder()
-    // 내용 입력 창 오픈 
-    informationBoxOpen()
+/* Home */
+/* main image */
+.mainImages{
+    width: 100vw;
+    height: 60vw;
+}
+.imageBox{
+    display: flex;
+    position: relative;
+    width: 600vw;
+    height: 100%;
+    left: 0;
+}
+.image{
+    width: 100vw;
+    height: 100%;
+}
+/* Calendar */
+.calendarBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 70vw;
+    
+    /* background-color: orange; */
+}
+.calendar{
+    width: 80%;
+    height: 90%;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    /* background-color: purple; */
+}
+/* 월,년 */
+.monthYear{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    box-sizing: border-box;
+    /* border-bottom: 10px solid pink; */
+    background-color: rgb(251, 206, 177);
+}
+.month{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    font-size: 19px;
+    font-weight: 700;
+    /* background-color: yellow; */
+}
+.arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    font-size: 30px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.arrow:hover{
+    color:white;
+}
+.monthNumber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+    cursor: pointer;
+    color: rgb(73, 72, 72);
+    /* background-color: green; */
+}
+.monthNumber:hover{
+    color: white;
+}
+.year{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    font-weight: 700;
+    cursor: pointer;
+    /* background-color: green; */
+}
+.year:hover{
+    color: white;
+}
+/* 주 */
+.weekBox{
+    display: flex;
+    width: 100%;
+    height: 5%;
+    box-sizing: border-box;
+    background-color: white;
+}
+.week{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    height: 100%;
+}
+.week:nth-child(1){
+    color: red;
+}
+.week:nth-last-child(1){
+    color: blue;
+}
+/* 일 */
+.day{
+    width: 100%;
+    height: 80%;
+    background-color: rgb(251, 206, 177);
+}
+.dayLine{
+    display: flex;
+    width: 100%;
+    height: 20%;
+}
+.dayBox{
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+}
+.dayNumber{
+    display: flex;
+    justify-content: center;
+    height: 30%;
+    font-weight: 700;
+    box-sizing: border-box;
+    /* background-color: red; */
+}
+.dayLine > .dayBox:nth-child(1) > .dayNumber{
+    color: red;
+}
+.dayLine > .dayBox:nth-last-child(1) > .dayNumber{
+    color: blue;
+}
+/* Calendar의 둥근 부분에 border을 맞추기 위함 */
+.dayLine:nth-last-child(1) > .dayBox:nth-child(1){
+    border-radius: 0 0 0 15px;
+}
+.dayLine:nth-last-child(1) > .dayBox:nth-last-child(1){
+    border-radius: 0 0 15px 0;
+}
+/* 날짜 클릭시 제목 + 색깔 지정 박스 */
+.informationBox{
+    display: none;
+    width: 300px;
+    height: 450px;
+    position: absolute;
+    /* 가운데로 보내는 방법 */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 40px;
+    overflow: hidden;
+    background-color: gray;
+}
+#titleColorBox{
+    display: flex;
+    width: 100%;
+    height: 25%;
+    box-sizing: border-box;
+    border-bottom: 2px solid black;
+    position: relative;
+    /* background-color: red; */
+}
+#title{
+    width: 80%;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    border: 0;
+    outline: none;
+    font-size: 20px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    bottom: 0px;
+    background-color: gray;
+}
+#title::placeholder{
+    color: white;
+    opacity: 0.6;
+    font-weight: 700;
+}
+#titleColor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 50px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    /*background-color: black;*/
+}
+#titleColorPoint{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: blue;
+}
+#colorChoiceBox{
+    display: none;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(47, 47, 47);
+}
+.subColorChoiceBox{
+    display: flex;
+    width: 100%;
+    height: 50px;
+}
+.choiceBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 50px;
+}
+.choiceColor{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+/* test */
+.colorBox{
+    display: flex;
+    width: 350px;
+    height: 100px;
+    background-color: red;
+}
+.buttonC{
+    width: 350px;
+}
+.colorColor{
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    background-color: black;
 }
 
-// 파란 테두리 생성
-function blueBorder (){
-    for(let i = 0; i < dayBox.length; i++){
-        for(let j = 0; j < dayBox.length; j++){
-            dayBox[i].addEventListener('click', () => {
-                if(i == j){
-                    dayBox[j].style.borderColor = "blue";
-                }
-                else{
-                    dayBox[j].style.borderColor = "transparent";
-                }
-            })
-        }
-    }
+/* test  */
+.bigBox{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    position: relative;
+}
+.smallBox{
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-function informationBoxOpen(){
-    const informationBox = document.querySelector(".informationBox")
-    for(let i = 0; i < dayBox.length; i++){
-        dayBox[i].addEventListener("click", () => {
-            informationBox.style.display = "block"
-        })
-    }
+.aaa{
+    width: 50px;
+    height:100%;
+    background-color: yellow;
 }
-
-//컬러 포인트 클릭 시 컬러초이스박스 오픈
-const titleColorPoint = document.querySelector("#titleColorPoint")
-titleColorPoint.addEventListener("click", () => {
-    clockBoxOpen();
-})
-
-function clockBoxOpen(){
-    const colorChoiceBox = document.querySelector("#colorChoiceBox")
-    colorChoiceBox.style.display = 'block';
-}
-
-//버튼을 누르면 value 값 가져오기
-// window.onload = function() {
-//     const aaa = localStorage.getItem("myText");
-//     if(aaa){
-//         document.querySelector(".hear").textContent = aaa;
-//     }
-// }
-// function getValue() {
-//     const input = document.querySelector(".input")
-//     const hear = document.querySelector(".hear").textContent = input.value;
-
-//     localStorage.setItem("myText", input.value)
-//     input.value = "";
-// }
-
-// // 버튼을 누르면 그 버튼 색깔이 되는 것
-// function getColor(color) {
-//     const colorColor = document.querySelector(".colorColor")
-//     colorColor.style.backgroundColor = color;
-// }
-
-//여러개의 html 여러개를 js 파일에 넣으면 에러가 걸림
