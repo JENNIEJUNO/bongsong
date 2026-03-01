@@ -38,123 +38,168 @@
             <!-- 날짜 표시하는 곳 -->
             <div class="day">
                 <div class="dayLine">
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">1</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">2</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">3</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">4</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">5</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">6</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">7</div>
                     </div>
                 </div>
                 <div class="dayLine">
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">1</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">2</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">3</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">4</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">5</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">6</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">7</div>
                     </div>
                 </div>
                 <div class="dayLine">
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">1</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">2</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">3</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">4</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">5</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">6</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">7</div>
                     </div>
                 </div>
                 <div class="dayLine">
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">1</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">2</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">3</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">4</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">5</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">6</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">7</div>
                     </div>
                 </div>
                 <div class="dayLine">
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">1</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">2</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">3</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">4</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()" >
                         <div class="dayNumber">5</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">6</div>
                     </div>
-                    <div class="dayBox">
+                    <div class="dayBox" onclick="informationBoxOpen()">
                         <div class="dayNumber">7</div>
+                    </div>
+                </div>
+            </div>
+            <!-- dayBox  onclick="" 를 클릭시 상자 오픈 -->
+            <div class="informationBox">
+                <div id="titleColorBox">
+                    <textarea id="title" placeholder="제목"></textarea>
+                    <div id="titleColor">
+                        <div id="titleColorPoint" onclick="clockBoxOpen()"></div>
+                    </div>
+                </div>
+                <div id="colorChoiceBox">
+                    <div class="subColorChoiceBox">
+                        <div class="choiceBox">
+                            <div class="choiceColor" color="red"></div>
+                        </div>
+                        <div class="choiceBox">
+                            <div class="choiceColor" color="orange"></div>
+                        </div>
+                        <div class="choiceBox">
+                            <div class="choiceColor" color="yellow"></div>
+                        </div>
+                        <div class="choiceBox">
+                            <div class="choiceColor" color="green"></div>
+                        </div>
+                        <div class="choiceBox">
+                            <div class="choiceColor" color="blue"></div>
+                        </div>
+                    </div>
+                    <div class="subColorChoiceBox">
+                        <div class="choiceBox">
+                            <div class="choiceColor" color="navy"></div>
+                        </div>
+                        <div class="choiceBox">
+                            <div class="choiceColor" color="purple"></div>
+                        </div>
+                        <div class="choiceBox">
+                            <div class="choiceColor" color="olive"></div>
+                        </div>
+                        <div class="choiceBox">
+                            <div class="choiceColor" color="mediumaquamarine"></div>
+                        </div>
+                        <div class="choiceBox">
+                            <div class="choiceColor" color="pink"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="script.js" defer></script>
+    <script src="script.js"r></script>
 </body>
 </html>
