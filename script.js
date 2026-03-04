@@ -19,73 +19,99 @@ if(imageBox){
     })
 }
 
-// 날짜 클릭 시
-// 1.파란 테두리 생성
-// 2. 내용 입력 창 오픈
-const dayBox = document.querySelectorAll(".dayBox")
+// informationBox colorChoiceBox 이벤트
+const dayBox = document.querySelectorAll(".dayBox");
+const informationBox = document.querySelector(".informationBox");
+let informationSwitch = false;
+const titleColorPoint = document.querySelector("#titleColorPoint");
+const colorChoiceBox = document.querySelector("#colorChoiceBox");
+const subColorChoiceBox = document.querySelector(".subColorChoiceBox");
+const success = document.querySelector(".success");
+let colorChoiceBoxswitch = false;
+const choiceColor = document.querySelectorAll(".choiceColor");
+const title = document.querySelector("#title");
 
-if(dayBox){
-    // 파란 테두리 생성 함수
-    blueBorder()
-    // 내용 입력 창 오픈 
-    informationBoxOpen()
-}
-
-// 파란 테두리 생성
-function blueBorder (){
-    for(let i = 0; i < dayBox.length; i++){
+//dayBox 파란 테두리 생성 (information 이 꺼지면 파란테두리도 사라짐 수정 필요)  
+for(let i = 0; i < dayBox.length; i++){
+    dayBox[i].addEventListener("click", () => {
         for(let j = 0; j < dayBox.length; j++){
-            dayBox[i].addEventListener('click', () => {
-                if(i == j){
-                    dayBox[j].style.borderColor = "blue";
-                }
-                else{
-                    dayBox[j].style.borderColor = "transparent";
-                }
-            })
+            if(i == j && !informationSwitch){
+                dayBox[j].style.borderColor = "blue";
+            }
+            else{
+                dayBox[j].style.borderColor = "transparent";
+            }
         }
+    })
+}
+
+document.addEventListener("click", informationEvent);
+
+function informationEvent(event){
+    // informationBox 가 닫혀있고 dayBox를 클릭시 informationBox 오픈
+    if(event.target.closest(".dayBox") && !informationSwitch){
+        informationBox.style.display = "block";
+        informationSwitch = true;
+    }
+    // 컬러박스가 닫혀 있고 컬로포인트를 클릭하면 컬러박스 오픈
+    else if(!colorChoiceBoxswitch && titleColorPoint.contains(event.target)){
+        colorChoiceBox.style.display = "block";
+        colorChoiceBoxswitch = true;
+    }
+    // 컬러박스가 열려있을때 컬러박스를 제외 한 어디를 눌러도 컬러박스 닫힘
+    else if(colorChoiceBoxswitch && !colorChoiceBox.contains(event.target)){
+        colorChoiceBox.style.display = "none";
+        colorChoiceBoxswitch = false;
+    }
+    // 컬러 클릭시 컬로포인트 색 변경
+    else if(colorChoiceBoxswitch && colorChoiceBox.contains(event.target)){
+        colorChance(event);
+    }
+    // informationBox 박스가 열려있고 컬러박스가 닫혀 있을때 컬러포인트를 제외한 나머지 클릭시 informationBox 닫기
+    else if(informationSwitch && !colorChoiceBoxswitch && !titleColorPoint.contains(event.target) && !informationBox.contains(event.target)){
+        informationBox.style.display = "none";
+        informationSwitch = false;
+    }
+    // 성공버튼 클릭 시 내용이 있을 경우 informationContent 안에 내용 추가
+    else if(title.value.trim() !== "" && success.contains(event.target)){
+        clickSuccess()
     }
 }
 
-function informationBoxOpen(){
-    const informationBox = document.querySelector(".informationBox")
-    for(let i = 0; i < dayBox.length; i++){
-        dayBox[i].addEventListener("click", () => {
-            informationBox.style.display = "block"
-        })
-    }
+// 컬러 클릭시 컬로포인트 색 변경 함수
+function colorChance(event){ titleColorPoint.style.backgroundColor = event; }
+// title에 내용이 있을 시 content에 내용 추가
+function clickSuccess(){
+    const informationContent = document.querySelector(".informationContent");
+    // 컬러와 내용이 들어갈 요소
+    const titleBox = document.createElement("div")
+    titleBox.classList.add("titleBox")
+    informationContent.appendChild(titleBox)
+    // 선택한 컬러
+    const titleColor = document.createElement("div")
+    titleColor.classList.add("titleColor")
+    // titleColorPoint와 같은 색 가져오기
+    const getTitleColor = window.getComputedStyle(titleColorPoint).backgroundColor
+    titleColor.style.backgroundColor = getTitleColor;
+    titleBox.appendChild(titleColor)
+    // 내용
+    const content = document.createElement("div")
+    content.classList.add("content")
+    titleBox.appendChild(content)
+    content.innerHTML = title.value;
+    title.value = "";
 }
 
-//컬러 포인트 클릭 시 컬러초이스박스 오픈
-const titleColorPoint = document.querySelector("#titleColorPoint")
-titleColorPoint.addEventListener("click", () => {
-    clockBoxOpen();
-})
+// test //
+const testBox = document.querySelector(".testBox");
 
-function clockBoxOpen(){
-    const colorChoiceBox = document.querySelector("#colorChoiceBox")
-    colorChoiceBox.style.display = 'block';
-}
+// const obj = [];
 
-//버튼을 누르면 value 값 가져오기
-// window.onload = function() {
-//     const aaa = localStorage.getItem("myText");
-//     if(aaa){
-//         document.querySelector(".hear").textContent = aaa;
-//     }
-// }
-// function getValue() {
-//     const input = document.querySelector(".input")
-//     const hear = document.querySelector(".hear").textContent = input.value;
+// obj.push({
+//     name: "김봉섭",
+//     title: "제목"
+// })
 
-//     localStorage.setItem("myText", input.value)
-//     input.value = "";
-// }
+// testBox.innerHTML = obj[0].name;
 
-// // 버튼을 누르면 그 버튼 색깔이 되는 것
-// function getColor(color) {
-//     const colorColor = document.querySelector(".colorColor")
-//     colorColor.style.backgroundColor = color;
-// }
 
-//여러개의 html 여러개를 js 파일에 넣으면 에러가 걸림
